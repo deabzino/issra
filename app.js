@@ -80,11 +80,14 @@ function openModal(type) {
     message: ["the red machine / no. 04", "need a random message?", "press the button. obviously.", `<div class="message-output"><div><p id="message-text">waiting patiently...</p><button class="game-action" id="message-btn">give me one</button></div></div>`],
     ideas: ["little idea box / no. 05", "open a tiny thought", "three small cards for a little pause, a little laugh, or a tiny reminder.", `<div class="idea-box"><button class="idea-card" data-idea="u don't have to have everything figured out rn."><b>open when overthinking</b><span>✦</span></button><button class="idea-card" data-idea="drink water, stretch ur shoulders, and stop pretending ur not tired."><b>open when tired</b><span>♡</span></button><button class="idea-card" data-idea="ur allowed to choose what feels right for u, even if it takes time."><b>open when unsure</b><span>✿</span></button></div><div class="idea-output" id="idea-output">pick a card and i'll leave a tiny note here ↓</div>`],
     exe: ["a very serious computer / no. 06", "issra.exe", "a tiny computer with suspiciously accurate stats.", `<div class="exe-window"><div class="exe-body"><div class="exe-line"><span>STATUS</span><b>ONLINE ♡</b></div><div class="exe-line"><span>PATIENCE</span><b>999+</b></div><div class="exe-line"><span>CHAOS</span><b>87%</b></div><div class="exe-line"><span>KINDNESS</span><b>100%</b></div></div></div>`],
-    archive: ["little archive / no. 07", "the archive", "a small place for the kind of care this website is trying to celebrate.", `<div class="archive-board"><article class="archive-card"><h4>the brief</h4><p>a tiny internet corner made for one specific person, with an unnecessarily large amount of red stationery.</p></article><article class="archive-card"><h4>the takeaway</h4><p>some people can matter a lot without needing a dramatic explanation.</p></article></div>`]
+    archive: ["little archive / no. 07", "the archive", "a small place for the kind of care this website is trying to celebrate.", `<div class="archive-board"><article class="archive-card"><h4>the brief</h4><p>a tiny internet corner made for one specific person, with an unnecessarily large amount of red stationery.</p></article><article class="archive-card"><h4>the takeaway</h4><p>some people can matter a lot without needing a dramatic explanation.</p></article></div>`],
+    final: ["last page / no. 08", "you made it all the way here", "idk if this website was necessary but i made it anyway.", `<div class="final-note"><div class="bow">୨୧</div><p>despite everything that's happened and everything that's changed, i'm glad we can still be friends. you've meant a lot to me and i genuinely hope everything goes well for you. take care of yourself and keep doing what's best for you.</p><p>okay bye before i make another section</p><small>made by arian</small></div>`]
   };
   const chapter = safeChapter[type] || safeChapter.about;
+  const chapterOrder = ["about", "appreciate", "according", "message", "ideas", "exe", "archive", "final"];
+  const chapterNumber = chapterOrder.indexOf(type) + 1 || 1;
   const escape = value => String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
-  content.innerHTML = `<span class="chapter-kicker">${escape(chapter[0])}</span><h2 id="modal-title" class="chapter-title">${escape(chapter[1])}</h2><p class="chapter-intro">${escape(chapter[2])}</p>${chapter[3]}`;
+  content.innerHTML = `<div class="chapter-progress">chapter ${String(chapterNumber).padStart(2, "0")} / ${chapterOrder.length}<button class="back-to-desk" type="button">back to desk</button></div><span class="chapter-kicker">${escape(chapter[0])}</span><h2 id="modal-title" class="chapter-title">${escape(chapter[1])}</h2><p class="chapter-intro">${escape(chapter[2])}</p>${chapter[3]}`;
   modal.classList.remove("is-hidden");
   document.body.style.overflow = "hidden";
   if (type === "appreciate") $$(".fold-note", content).forEach(note => note.addEventListener("click", () => note.classList.toggle("open")));
@@ -96,6 +99,7 @@ function openModal(type) {
   }));
   if (type === "message") $("#message-btn").addEventListener("click", () => { state.message++; $("#message-text").textContent = messages[Math.floor(Math.random() * messages.length)]; });
   if (type === "ideas") $$(".idea-card", content).forEach(card => card.addEventListener("click", () => { $("#idea-output").textContent = card.dataset.idea; card.classList.add("opened"); burstAt(card.getBoundingClientRect().left + 35, card.getBoundingClientRect().top + 35, 5); }));
+  $(".back-to-desk", content).addEventListener("click", closeModal);
   sparkleTrail();
 }
 function closeModal() {
@@ -144,9 +148,15 @@ document.addEventListener("click", e => {
   const lines = ["i said don't click this 😭", "this button is feeling observed", "okay stop bullying the button", "fake warning: excessive curiosity detected", "u have been noticed by the stickers", "the desk is shaking. respectfully.", "fine. u unlocked the secret: u are persistent ♡"];
   toast(lines[Math.min(state.secret - 1, lines.length - 1)]);
   button.style.transform = `translate(${Math.random() * 80 - 40}px,${Math.random() * 50 - 25}px) rotate(${Math.random() * 20 - 10}deg)`;
-  if (state.secret >= 7) { button.textContent = "secret unlocked ♡"; button.style.background = "#d9efdf"; }
+  if (state.secret >= 7) { button.textContent = "secret unlocked"; button.style.background = "#d9efdf"; setTimeout(() => openModal("final"), 500); }
 });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+document.addEventListener("keydown", e => {
+  if ((e.key === "Enter" || e.key === " ") && document.activeElement?.matches("[data-open]")) {
+    e.preventDefault();
+    document.activeElement.click();
+  }
+});
 window.addEventListener("load", () => { setTimeout(() => { $("#loader-copy").textContent = "almost done"; }, 1050); setTimeout(() => { $("#loader-copy").textContent = "okay maybe i went a bit far with this"; }, 2050); setTimeout(() => { $("#loader").classList.add("is-hidden"); $("#site").classList.remove("is-hidden"); }, 3200); });
 window.openModal = openModal;
 window.closeModal = closeModal;
