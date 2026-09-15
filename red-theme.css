@@ -90,10 +90,22 @@
   position: relative;
   z-index: 4;
   display: block;
-  width: max-content;
-  margin: 14px auto 0;
-  padding: 4px 12px;
-  border-radius: 99px;
-  background: #fff0ed;
-  color: #7e1d35;
+  width: auto;
+  margin: 9px 0 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #744b5e;
+  font: 15px var(--hand);
+}
+.computer-object .monitor:after {
+  display: none;
+}
+.computer-object .monitor-screen:after {
+  content: "●  ●  ●";
+  display: block;
+  margin-top: 2px;
+  color: #a92743;
+  font: 8px var(--round);
+  letter-spacing: 2px;
 }
