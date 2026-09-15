@@ -72,3 +72,20 @@
 @media (prefers-reduced-motion: reduce) {
   .site, .site:after { animation: none; }
 }
+.computer-object {
+  padding-bottom: 22px;
+}
+.computer-object .monitor,
+.computer-object .keyboard {
+  position: relative;
+  z-index: 3;
+}
+.computer-object label {
+  position: relative;
+  z-index: 4;
+  display: block;
+  margin-top: 24px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: rgba(255, 240, 237, .8);
+}
