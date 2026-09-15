@@ -144,11 +144,18 @@ document.addEventListener("click", e => {
   if (!button) return;
   state.secret++;
   document.body.classList.remove("wiggle"); void document.body.offsetWidth; document.body.classList.add("wiggle");
-  burstAt(e.clientX, e.clientY, state.secret > 6 ? 20 : 9);
-  const lines = ["i said don't click this 😭", "this button is feeling observed", "okay stop bullying the button", "fake warning: excessive curiosity detected", "u have been noticed by the stickers", "the desk is shaking. respectfully.", "fine. u unlocked the secret: u are persistent ♡"];
+  burstAt(e.clientX, e.clientY, state.secret >= 3 ? 20 : 9);
+  const lines = ["i said don't click this 😭", "okay stop bullying the button", "fine. u found it."];
   toast(lines[Math.min(state.secret - 1, lines.length - 1)]);
   button.style.transform = `translate(${Math.random() * 80 - 40}px,${Math.random() * 50 - 25}px) rotate(${Math.random() * 20 - 10}deg)`;
-  if (state.secret >= 7) { button.textContent = "secret unlocked"; button.style.background = "#d9efdf"; setTimeout(() => openModal("final"), 500); }
+  if (state.secret === 3) {
+    button.textContent = "secret found";
+    button.style.background = "#d9efdf";
+    button.disabled = true;
+    $("#secret-egg").classList.add("is-found");
+    $("#secret-egg").setAttribute("tabindex", "0");
+    toast("the secret is staying right here now");
+  }
 });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 document.addEventListener("keydown", e => {
