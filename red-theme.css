@@ -129,6 +129,20 @@
 .secret-egg b, .secret-egg small { display: block; }
 .secret-egg b { font: 19px var(--hand); }
 .secret-egg small { margin-top: 4px; font: 13px var(--hand); color: #98606b; }
+.secret-egg-close {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #c56a78;
+  border-radius: 50%;
+  background: #fff8f1;
+  color: #8f1d35;
+  font: 18px/20px var(--round);
+  cursor: pointer;
+}
+.secret-egg-close:hover { background: #f3c9ce; transform: rotate(8deg); }
 @keyframes secret-land { from { opacity: 0; transform: translateY(-12px) rotate(4deg) scale(.8); } to { opacity: 1; transform: rotate(4deg) scale(1); } }
 @media (max-width: 620px) { .secret-egg { right: 14px; top: 82px; transform: scale(.86) rotate(4deg); transform-origin: top right; } }
 .chapter-progress { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 18px; color: #a62d47; font: 14px var(--hand); text-transform: lowercase; }

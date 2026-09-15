@@ -157,6 +157,10 @@ document.addEventListener("click", e => {
     toast("the secret is staying right here now");
   }
 });
+$("#secret-egg-close").addEventListener("click", e => {
+  e.stopPropagation();
+  $("#secret-egg").classList.remove("is-found");
+});
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 document.addEventListener("keydown", e => {
   if ((e.key === "Enter" || e.key === " ") && document.activeElement?.matches("[data-open]")) {
