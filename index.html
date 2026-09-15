@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="a tiny digital diary for issra" />
+    <title>issra's little internet ♡</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Kalam:wght@400;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=7" />
+    <link rel="stylesheet" href="red-theme.css?v=7" />
+  </head>
+  <body>
+    <div id="loader" class="loader" aria-live="polite">
+      <div class="loader-sparkle">✦</div>
+      <p id="loader-copy">making something for issra…</p>
+      <span class="loader-progress"><i></i></span>
+    </div>
+
+    <main id="site" class="site is-hidden">
+      <div id="particles" class="particles" aria-hidden="true"></div>
+      <div class="top-note">a tiny corner of the internet, made with too much red ink</div>
+
+      <section id="landing" class="landing screen">
+        <div class="landing-scribble scribble-one">for u, obviously</div>
+        <div class="landing-scribble scribble-two">pls explore gently</div>
+        <div class="hero-sticker sticker-bow" aria-hidden="true">୨୧</div>
+        <div class="hero-card">
+          <span class="eyebrow">issue no. 01 / the issra archive</span>
+          <span class="opening-credit">a little thing by arian</span>
+          <h1>hey issra <span>♡</span></h1>
+          <p class="hero-lede">idk why i decided making a whole website was a good idea but we're here now</p>
+          <p class="hero-sub">so go explore i guess</p>
+          <button class="glossy-btn" id="open-site">open <span>♡</span></button>
+          <div class="hero-stamp">made<br>with care<br><small>by arian</small></div>
+          <span class="opening-credit-bottom">written, coded &amp; decorated by arian</span>
+        </div>
+        <div class="floating-doodle doodle-star">✦</div>
+        <div class="floating-doodle doodle-heart">♡</div>
+        <div class="floating-doodle doodle-flower">✿</div>
+      </section>
+
+      <section id="dashboard" class="dashboard screen is-hidden">
+        <header class="dashboard-header">
+          <div>
+            <span class="eyebrow">issra's little internet</span>
+            <h2>the desk <span>♡</span></h2>
+          </div>
+          <div class="header-meta"><span class="online-dot"></span> issra's corner / online</div>
+        </header>
+
+        <div class="desk-layout">
+          <aside class="desk-sidebar paper-panel">
+            <div class="mini-profile">
+              <div class="profile-orbit"><div class="profile-initial">i</div></div>
+              <div><strong>issra.exe</strong><span>currently being iconic</span></div>
+            </div>
+            <div class="sidebar-line"></div>
+            <p class="sidebar-caption">click around. there is no particular order. this is a desk, not a filing system.</p>
+            <div class="tiny-stats">
+              <span><b>08</b> chapters</span><span><b>∞</b> good things</span>
+            </div>
+            <button class="tiny-link" data-open="archive">open the little archive →</button>
+          </aside>
+
+          <div class="desk-stage">
+            <div class="window-glow"></div>
+            <button class="desk-object diary-object" data-open="about" aria-label="open diary page about issra">
+              <span class="object-shadow"></span><span class="diary-ribbon">୨୧</span>
+              <span class="diary-cover"><b>dear issra,</b><small>a little page about u</small><i>✦</i></span>
+              <label>the diary</label>
+            </button>
+            <button class="desk-object polaroid-object" data-open="appreciate" aria-label="open things i appreciate about you">
+              <span class="polaroid polaroid-back"></span><span class="polaroid polaroid-front"><i>✿</i><b>things<br>i appreciate</b><small>tap to unfold</small></span>
+              <label>little notes</label>
+            </button>
+            <button class="desk-object computer-object" data-open="exe" aria-label="open issra exe computer">
+              <span class="monitor"><span class="monitor-screen"><b>ISSRA.EXE</b><small>status: online ♡</small><i>▰ ▰ ▰</i></span></span><span class="keyboard"></span>
+              <label>the computer</label>
+            </button>
+            <button class="desk-object sticker-object" data-open="according" aria-label="open issra according to me">
+              <span class="sticker-sheet"><i>✦</i><b>issra<br>according<br>to me</b><em>peel here</em></span>
+              <label>sticker sheet</label>
+            </button>
+            <button class="desk-object envelope-object" data-open="message" aria-label="open random message machine">
+              <span class="envelope"><i>♡</i></span><span class="envelope-seal">✦</span><label>tiny envelope</label>
+            </button>
+            <button class="desk-object flower-object" data-open="ideas" aria-label="open the little idea box">
+              <span class="flower-pot"><i>✿</i><b>✿</b><em>♡</em></span><label>little idea box</label>
+            </button>
+            <button class="desk-object notification-object" data-open="archive" aria-label="open the little archive">
+              <span class="notification"><i></i><b>new notification</b><small>you made it here ♡</small></span><label>notice board</label>
+            </button>
+            <button id="secret-button" class="secret-button">don't click this</button>
+            <div class="desk-label">a slightly overdecorated desk / pls don't judge the cable management</div>
+          </div>
+        </div>
+        <footer class="dashboard-footer"><span>made specifically for issra</span><span>scroll? no. click things.</span><span>made by arian</span><span>designed, coded &amp; decorated by arian</span><span class="footer-sparkles">✦ ✧ ✦</span></footer>
+      </section>
+    </main>
+
+    <div id="modal" class="modal is-hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-backdrop" data-close></div>
+      <section class="modal-card">
+        <button class="close-btn" data-close aria-label="close chapter">×</button>
+        <div id="modal-content"></div>
+      </section>
+    </div>
+    <div id="toast-region" class="toast-region" aria-live="polite"></div>
+    <div id="burst-layer" class="burst-layer" aria-hidden="true"></div>
+    <script src="app.js?v=11"></script>
+  </body>
+</html>
