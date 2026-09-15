@@ -73,19 +73,27 @@
   .site, .site:after { animation: none; }
 }
 .computer-object {
-  padding-bottom: 22px;
+  width: 260px;
+  padding: 0 10px 8px;
 }
-.computer-object .monitor,
+.computer-object .monitor {
+  position: relative;
+  z-index: 3;
+  margin: 0 auto;
+}
 .computer-object .keyboard {
   position: relative;
   z-index: 3;
+  margin: 20px auto 0;
 }
 .computer-object label {
   position: relative;
   z-index: 4;
   display: block;
-  margin-top: 24px;
-  padding: 4px 10px;
+  width: max-content;
+  margin: 14px auto 0;
+  padding: 4px 12px;
   border-radius: 99px;
-  background: rgba(255, 240, 237, .8);
+  background: #fff0ed;
+  color: #7e1d35;
 }
